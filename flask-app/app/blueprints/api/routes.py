@@ -22,7 +22,7 @@ def index():
 # Make a Submit Route that will interact With React Front End VIA request package
 @api.route('/submit', methods=['GET', 'POST'])
 def submit():
-    ##### Create the recieve request from REACT forms
+    ##### Create the recieve request from REACT forms ########
     if not request.is_json:
         return jsonify({'error': 'Your request content-type must be application/json'}), 400
     # Get data from request body
@@ -36,16 +36,27 @@ def submit():
     firstName = data['firstName']
     lastName = data['lastName']
     Supervisor = data['Supervisor']
+    email = False
+    phoneNumber = False
     # non-required values, boolean checker to avoid error
     if data['email'] in data:
         email = data['email']
     if data['phoneNumber'] in data:
         phoneNumber = data['phoneNumber']    
-    # implement a User() model here
-    return False
+    user = User(firstName=firstName, lastName=lastName, Supervisor=Supervisor, email=email, phoneNumber=phoneNumber)
+    ########## Query the Actual API ############
+    url = "https://o3m5qixdng.execute-api.us-east-1.amazonaws.com/api/submit"
+
+    # use to_dict() to return a DYNAMIC json object
+    payload = json.dumps(user.to_dict())
+    headers = {
+    'Content-Type': 'application/json'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    # print(response.text)
+    ##############################################
+    return jsonify(response.json())
 
 
-# Prepping backend fetch request for drop down menu
-@api.route('/drop-down', methods=['GET'])
-def drop_down():
-    pass
