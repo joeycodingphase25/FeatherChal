@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function UserSupervisor(props) {
     // create flash message in app.js to pass through props
-    // const { flashMessage } = props;
+    const { flashMessage } = props;
 
     // handles dropdown
     const [supervisors, setSupervisors] = useState([]) // grab the list of eras from era
@@ -39,8 +39,8 @@ export default function UserSupervisor(props) {
                 if (data.error){
                     console.error(data.error)
                 }else {
-                    console.log("its working")
-                    // props.flashMessage(`Thank you ${firstName}, Notification Success!`, 'success')
+                    console.log(data)
+                    props.flashMessage(`Thank you ${firstName}, Notification Success!`, 'success')
                 }
             })
     }
