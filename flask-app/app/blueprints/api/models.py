@@ -1,6 +1,6 @@
 
 # Creating models to have parsed data fufilled by model methods, Instead of routes
-
+## Note that should there be a PK,FK relationship, the Supervisor model can be changed to flaskDB model and backref to the user model
 # supervisors model will hold the list of supervisor objects, can be scaled by adding more to the model
 class Supervisors():
     def __init__(self, sups):
@@ -27,6 +27,8 @@ class Supervisors():
                         self.listing[i], self.listing[i+1] = self.listing[i+1], self.listing[i]
 
 # will place to_dict method on supervisor to return to REACT
+# can be migrated to a database and connected to user via PK-FK relationship with flaskDB
+
 class Supervisor():
     def __init__(self, first, last, jury):
         self.firstName = first
