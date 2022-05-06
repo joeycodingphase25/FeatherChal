@@ -1,0 +1,14 @@
+# pull official base image
+FROM node:14.16.0-alpine
+# expose port
+EXPOSE 3000
+# set working directory
+WORKDIR /app
+
+
+# add app
+COPY  react-app .
+RUN npm install
+
+# start app
+CMD ["npm", "start"]
