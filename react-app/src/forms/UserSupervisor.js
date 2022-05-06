@@ -64,14 +64,14 @@ export default function UserSupervisor(props) {
                 
                 {/* Select Drop Down here for supervisors */}
                 {/* This needs troubleshooting and testing */}
-                <select defaultValue='default' className='w-100'onChange={(e)=>setChosen(e.target.value)}>
-                {supervisors.map((supervisor, idx) => <option key={idx} value={supervisor.supervisor}>{supervisor}</option>)} 
+                <select defaultValue='default' className='w-100 mt-3'onChange={(e)=>setChosen(e.target.value)}>
+                {supervisors.map((supervisor, idx) => <option key={idx} value={supervisor.jurisdiction}>{`<${supervisor.jurisdiction}>-<${supervisor.firstName}>, <${supervisor.lastName}>`}</option>)} 
                     <option value='default' disabled>Choose supervisor..</option>
                 </select>
 
 
 
-                <input type='submit' className='btn btn-outline-dark w-100 p-3' value='Create User' />
+                <input type='submit' className='btn btn-outline-dark w-100 p-3 mt-3' value='Create User' />
             </div>
         </form>
         </>

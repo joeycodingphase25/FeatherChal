@@ -17,7 +17,7 @@ def index():
     supervisors.sorter()
     # grab the list of *Superisor* objects
     super_list = supervisors.listing
-    return jsonify([x.required() for x in super_list])
+    return jsonify([x.to_dict() for x in super_list])
 
 # Make a Submit Route that will interact With React Front End VIA request package
 @api.route('/submit', methods=['GET', 'POST'])
