@@ -27,36 +27,35 @@ def submit():
         return jsonify({'error': 'Your request content-type must be application/json'}), 400
     # Get data from request body
     data = request.json
-    # Check to make sure all required fields are present
+    # move to model after database
     for field in ['firstName', 'lastName', 'Supervisor']: # per requirements
-        if field not in data:
+        if not bool(data[field]):
             # if not return a 400 response with error
             return jsonify({'error': f'{field} must be in request body'}), 400
-    # Get fields from data dict
     firstName = data['firstName']
     lastName = data['lastName']
     Supervisor = data['Supervisor']
-    email = False
-    phoneNumber = False
-    # non-required values, boolean checker to avoid error
-    if data['email'] in data:
-        email = data['email']
-    if data['phoneNumber'] in data:
-        phoneNumber = data['phoneNumber']    
+    # non-required values, ternary checker to avoid error
+    email = data['email']
+    phoneNumber = data['phoneNumber']
+    # create User Model and Validate
+
     user = User(firstName=firstName, lastName=lastName, Supervisor=Supervisor, email=email, phoneNumber=phoneNumber)
-    ########## Query the Actual API ############
-    url = "https://o3m5qixdng.execute-api.us-east-1.amazonaws.com/api/submit"
+    
+    # # Get fields from data dict
+    # ########## Query the Actual API/submit ############
+    # url = "https://o3m5qixdng.execute-api.us-east-1.amazonaws.com/api/submit"
+    # # use to_dict() to return a DYNAMIC json object
+    # payload = json.dumps(user.to_dict())
+    # headers = {
+    # 'Content-Type': 'application/json'
+    # }
+    # response = requests.request("POST", url, headers=headers, data=payload)
+    # # print(response.text)
+    # ##############################################
+    # # return jsonify(response.json())
 
-    # use to_dict() to return a DYNAMIC json object
-    payload = json.dumps(user.to_dict())
-    headers = {
-    'Content-Type': 'application/json'
-    }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-
-    # print(response.text)
-    ##############################################
-    return jsonify(response.json())
+    ## not using the API due to uncertain requirements
+    return jsonify(user.to_dict())
 
 

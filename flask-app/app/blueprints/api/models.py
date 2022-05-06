@@ -1,6 +1,7 @@
 
 # Creating models to have parsed data fufilled by model methods, Instead of routes
 ## Note that should there be a PK,FK relationship, the Supervisor model can be changed to flaskDB model and backref to the user model
+
 # supervisors model will hold the list of supervisor objects, can be scaled by adding more to the model
 class Supervisors():
     def __init__(self, sups):
@@ -12,7 +13,7 @@ class Supervisors():
             x = Supervisor(first=first, last=last, jury=jury)
             self.listing.append(x)
 
-    # sort the objects supervisor per requirements
+    # sort the objects supervisor per requirements -- Time complexity O(n) + 0(n) --
     def sorter(self):    
         # sort first by jury
         self.listing.sort(key=lambda x: x.jury)

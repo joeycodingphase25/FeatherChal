@@ -23,12 +23,12 @@ export default function UserSupervisor(props) {
         // creating variable to pull from form 
         let firstName = e.target.firstName.value;
         let lastName = e.target.lastName.value;
-        let supervisor = chosen; // Implement this later
+        let Supervisor = chosen; // Implement this later
         let email = e.target.email.value;
         let phoneNumber = e.target.phoneNumber.value;
         
         // consolidate and fetch data from flask backend
-        let data = JSON.stringify({firstName, lastName, email, phoneNumber, supervisor})
+        let data = JSON.stringify({firstName, lastName, email, phoneNumber, Supervisor})
         
         fetch("http://127.0.0.1:5000/api/submit", {
             method: "POST",
@@ -39,7 +39,8 @@ export default function UserSupervisor(props) {
                 if (data.error){
                     console.error(data.error)
                 }else {
-                    props.flashMessage(`Thank you ${firstName}, Notification Success!`, 'success')
+                    console.log("its working")
+                    // props.flashMessage(`Thank you ${firstName}, Notification Success!`, 'success')
                 }
             })
     }
@@ -65,11 +66,9 @@ export default function UserSupervisor(props) {
                 {/* Select Drop Down here for supervisors */}
                 {/* This needs troubleshooting and testing */}
                 <select defaultValue='default' className='w-100 mt-3'onChange={(e)=>setChosen(e.target.value)}>
-                {supervisors.map((supervisor, idx) => <option key={idx} value={supervisor.jurisdiction}>{`<${supervisor.jurisdiction}>-<${supervisor.firstName}>, <${supervisor.lastName}>`}</option>)} 
-                    <option value='default' disabled>Choose supervisor..</option>
+                {supervisors.map((supervisor, idx) => <option key={idx} value={supervisor.firstName}>{`<${supervisor.jurisdiction}>-<${supervisor.firstName}>, <${supervisor.lastName}>`}</option>)} 
+                    <option value='default' disabled>Choose supervisor...</option>
                 </select>
-
-
 
                 <input type='submit' className='btn btn-outline-dark w-100 p-3 mt-3' value='Create User' />
             </div>
