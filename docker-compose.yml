@@ -1,0 +1,15 @@
+version: "3.0"
+
+services:
+  flask-challenge:
+    build: 
+      context: .
+      dockerfile: Dockerfile.flask
+    ports:
+      - 5000:5000
+  react-challenge:
+    build: 
+      context: .
+      dockerfile: Dockerfile.react
+    ports:
+      - 3000:3000
