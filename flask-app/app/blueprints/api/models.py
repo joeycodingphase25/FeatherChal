@@ -16,19 +16,17 @@ class Supervisors():
     def sorter(self):    
         # sort first by jury
         self.listing.sort(key=lambda x: x.jury)
+        # then sort by last name
+        for i in range(len(self.listing) - 1):
+            if self.listing[i].jury == self.listing[i+1].jury:
+                if self.listing[i].lastName > self.listing[i+1].lastName:
+                    self.listing[i], self.listing[i+1] = self.listing[i+1], self.listing[i]
+            
         # then sort by first name
         for i in range(len(self.listing) - 1):
             # sort in place
-            if self.listing[i].jury == self.listing[i+1].jury:
+            if self.listing[i].lastName == self.listing[i+1].lastName:
                 if self.listing[i].firstName > self.listing[i+1].firstName:
-                    self.listing[i], self.listing[i+1] = self.listing[i+1], self.listing[i]
-            
-        # then sort by last name
-        for i in range(len(self.listing) - 1):
-            idxOne = self.listing[i]
-            idxTwo = self.listing[i + 1]
-            if self.listing[i].firstName == self.listing[i+1].firstName:
-                if self.listing[i].lastName > self.listing[i+1].lastName:
                     self.listing[i], self.listing[i+1] = self.listing[i+1], self.listing[i]
             
 
