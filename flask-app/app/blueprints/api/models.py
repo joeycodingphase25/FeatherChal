@@ -1,7 +1,7 @@
 
 # Creating models to have parsed data fufilled by model methods, Instead of routes
 
-# supervisors model will hold the list of supervisor objects
+# supervisors model will hold the list of supervisor objects, can be scaled by adding more to the model
 class Supervisors():
     def __init__(self, sups):
         self.listing = []
@@ -21,14 +21,10 @@ class Supervisors():
             if self.listing[i].jury == self.listing[i+1].jury:
                 if self.listing[i].lastName > self.listing[i+1].lastName:
                     self.listing[i], self.listing[i+1] = self.listing[i+1], self.listing[i]
-            
-        # then sort by first name
-        for i in range(len(self.listing) - 1):
-            # sort in place
-            if self.listing[i].lastName == self.listing[i+1].lastName:
-                if self.listing[i].firstName > self.listing[i+1].firstName:
-                    self.listing[i], self.listing[i+1] = self.listing[i+1], self.listing[i]
-            
+                    # then Sort By first name
+                if self.listing[i].lastName == self.listing[i+1].lastName:
+                    if self.listing[i].firstName > self.listing[i+1].firstName:
+                        self.listing[i], self.listing[i+1] = self.listing[i+1], self.listing[i]
 
 # will place to_dict method on supervisor to return to REACT
 class Supervisor():

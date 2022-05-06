@@ -1,5 +1,5 @@
 import requests
-from app.blueprints.api.models import Supervisors, Supervisor
+from app.blueprints.api.models import Supervisors
 from flask import jsonify
 from . import api
 
@@ -17,6 +17,7 @@ def index():
     # grab the list of *Superisor* objects
     super_list = supervisors.listing
     return jsonify([x.required() for x in super_list])
+
 
 @api.route('/submit', methods=['GET', 'POST'])
 def submit():
