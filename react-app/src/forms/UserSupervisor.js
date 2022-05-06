@@ -58,10 +58,10 @@ export default function UserSupervisor(props) {
                 <input type='text' name='lastName' className='form-control' placeholder='Enter Last Name'/>
                 
                 <label htmlFor='email'>Email</label>
-                <input type='text' name='email' className='form-control' placeholder='Enter Your Email Here' />
+                <input type='text' name='email' className='form-control' placeholder='Enter Your Email Here (optional)' />
                 
                 <label htmlFor='phoneNumber'>Phone Number</label>
-                <input type='text' name='phoneNumber' className='form-control' placeholder='Enter Your Phone Number Here (XXX) XXX-XXXX' />
+                <input type='text' name='phoneNumber' className='form-control' placeholder='Enter Your Phone Number Here (XXX) XXX-XXXX (optional)' />
                 
                 {/* Select Drop Down here for supervisors */}
                 {/* This needs troubleshooting and testing */}

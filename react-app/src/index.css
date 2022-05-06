@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+select {
+  width: 400px;
+  min-width: 35px;
+  height: 40px;
+  background: rgb(165, 11, 11);
+  color: white;
+  text-align: center;
+  border: 2px solid white;
+  outline: none;
+  cursor: pointer;
+  margin-top: 5px;
+  border-radius: 20px;
+}
+select:focus {
+  background-color: rgb(35, 0, 90);
+}
