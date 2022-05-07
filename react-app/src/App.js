@@ -20,7 +20,7 @@ export default class App extends Component{
   render() {
     return (
       <>
-      <div className='container'>
+      <div className='container mt-5'>
       {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
         <UserSupervisor flashMessage={this.flashMessage}/>
       </div>
