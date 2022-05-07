@@ -8,14 +8,9 @@ This readMe file will cover how to start a local server, a Dockerfile setup, and
 $ cd flask-app
 $ python3 -m venv venv
 $ venv\scripts\activate
-```
-
-### Start localhost:5000 with flask
-```
 $ pip install -r requirements.txt
 $ flask run
 ```
-
 ### Start Localhost:3000 with react
 
 ```
@@ -51,14 +46,23 @@ $ docker rm -f myapp_flask
 $ docker rm -f myapp_react
 ```
 ------------------------------------------------
-## Launch with Docker-compile
-
+## Launch with Docker-compose
+Start docker
+```
+$ systemctl start docker
+$ service docker start
+```
+Clone files
+```
+$ git clone https://github.com/joeycodingphase25/FeatherChal.git
+$ cd FeatherChal
+```
+install docker-compose
 ```
 $ apt install docker-compose
 $ docker-compose up -d
 ```
-to shut off
-
+to remove
 ```
 $ docker-compose down
 ```
