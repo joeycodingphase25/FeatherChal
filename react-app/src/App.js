@@ -11,7 +11,7 @@ export default class App extends Component{
           category: null,
       }
   }
-  
+
   flashMessage = (message, category) => {
     this.setState({message,category})
   }
@@ -20,8 +20,8 @@ export default class App extends Component{
   render() {
     return (
       <>
-      {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
       <div className='container'>
+      {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
         <UserSupervisor flashMessage={this.flashMessage}/>
       </div>
       </>

@@ -12,12 +12,16 @@ export default function UserSupervisor(props) {
         fetch("http://127.0.0.1:5000/api/supervisors")
             .then(res => res.json())
             .then(supervisors => setSupervisors(supervisors))
-    }, []) 
+    }, [])
+
+    // clearFields = () => { 
+    //     document.getElementById("testClear").reset();
+    //   }
+      
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         let myHeaders = new Headers();
         myHeaders.append('Content-Type', 'application/json');
         // creating variable to pull from form 
@@ -26,7 +30,8 @@ export default function UserSupervisor(props) {
         let Supervisor = chosen; // Implement this later
         let email = e.target.email.value;
         let phoneNumber = e.target.phoneNumber.value;
-        
+        // Reset the Form
+        e.target.reset()
         // consolidate and fetch data from flask backend
         let data = JSON.stringify({firstName, lastName, email, phoneNumber, Supervisor})
         
@@ -43,11 +48,12 @@ export default function UserSupervisor(props) {
                     props.flashMessage(`Thank you ${firstName}, Notification Success!`, 'success')
                 }
             })
+        
     }
     return (
         <>
-        <form onSubmit={handleSubmit}>
-            <h3 className='text-center mt-3'>Create New User</h3>
+        <form id="testClear" onSubmit={handleSubmit}>
+            <h3 className='text-center mt-3'>Notification Request</h3>
             <h5>Enter Information Below</h5>
             <div className='form-group'>
 
